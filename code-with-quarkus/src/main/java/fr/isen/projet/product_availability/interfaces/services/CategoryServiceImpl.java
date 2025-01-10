@@ -19,7 +19,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category getOneCategory(String id_category) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM categories WHERE id_category = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM category WHERE id_category = ?")) {
             statement.setString(1, id_category);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -35,7 +35,7 @@ public class CategoryServiceImpl implements CategoryService {
     public List<Category> getAllCategory() {
         List<Category> categories = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM categories");
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM category");
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 categories.add(mapResultSetToCategory(resultSet));
@@ -50,7 +50,7 @@ public class CategoryServiceImpl implements CategoryService {
     public String addCategory(Category category) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO categories (name, description, date_created, bDelete) VALUES (?, ?, ?, ?)",
+                     "INSERT INTO category (name, description, date_created, bDelete) VALUES (?, ?, ?, ?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, category.name);
             statement.setString(2, category.description);
@@ -72,7 +72,7 @@ public class CategoryServiceImpl implements CategoryService {
     public void updateCategory(Category category) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "UPDATE categories SET name = ?, description = ?, bDelete = ? WHERE id_category = ?")) {
+                     "UPDATE category SET name = ?, description = ?, bDelete = ? WHERE id_category = ?")) {
             statement.setString(1, category.name);
             statement.setString(2, category.description);
             statement.setBoolean(3, category.bDelete);
@@ -86,7 +86,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public void removeCategory(String id_category) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM categories WHERE id_category = ?")) {
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM category WHERE id_category = ?")) {
             statement.setString(1, id_category);
             statement.executeUpdate();
         } catch (SQLException e) {

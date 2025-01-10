@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "49f85ed7-4a98-402d-bdf5-3b4ebdd86460",
+		"name": "Product_Availability",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34716277"
+	},
+	"item": [
+		{
+			"name": "OneProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/product/{id}",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"product",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OneCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/categories/{id}",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"categories",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OneSubcategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/subcategories/{id}",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"subcategories",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllProduct",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/products",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllCategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/categories",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "AllSubcategory",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/subcategories",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"subcategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "products",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/products",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/categories",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "subcategories",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/subcategories",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"subcategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateProduct",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/products",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateCategory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/categories",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "UpdateSubcategory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/subcategories",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"subcategories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/products/{id}",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"products",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Category",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/categories/{id}",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"categories",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Subcategory",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/subcategories/{id}",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"subcategories",
+						"{id}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url_product}}/status",
+					"host": [
+						"{{base_url_product}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

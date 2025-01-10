@@ -19,7 +19,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public Product getOneProduct(String id_product) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM products WHERE id_product = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM product WHERE id_product = ?")) {
             statement.setString(1, id_product);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -35,7 +35,7 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProduct() {
         List<Product> products = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM products");
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM product");
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 products.add(mapResultSetToProduct(resultSet));
@@ -50,7 +50,7 @@ public class ProductServiceImpl implements ProductService {
     public void updateProduct(Product product) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "UPDATE products SET name = ?, unit_price = ?, status = ?, id_subcategory = ?, stock = ?, id_provider = ?, date_updated = ?, bDelete = ? WHERE id_product = ?")) {
+                     "UPDATE product SET name = ?, unit_price = ?, status = ?, id_subcategory = ?, stock = ?, id_provider = ?, date_updated = ?, bDelete = ? WHERE id_product = ?")) {
             statement.setString(1, product.name);
             statement.setFloat(2, product.unit_price);
             statement.setString(3, product.status);
@@ -69,7 +69,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public void removeProduct(String id_product) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM products WHERE id_product = ?")) {
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM product WHERE id_product = ?")) {
             statement.setString(1, id_product);
             statement.executeUpdate();
         } catch (SQLException e) {
@@ -81,7 +81,7 @@ public class ProductServiceImpl implements ProductService {
     public String addProduct(Product product) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO products (name, unit_price, status, id_subcategory, stock, id_provider, date_created, date_updated, bDelete) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
+                     "INSERT INTO product (name, unit_price, status, id_subcategory, stock, id_provider, date_created, date_updated, bDelete) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, product.name);
             statement.setFloat(2, product.unit_price);

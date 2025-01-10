@@ -19,7 +19,7 @@ public class ProductResource {
 
     @GET
     public List<Product> getAllProducts() {
-        return productService.getAllProduct();
+        return productService.getAllProduct();  // Appel du service pour récupérer tous les produits
     }
 
     @GET

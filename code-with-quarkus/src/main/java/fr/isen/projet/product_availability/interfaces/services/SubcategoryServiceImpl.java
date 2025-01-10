@@ -19,7 +19,7 @@ public class SubcategoryServiceImpl implements SubCategoryService {
     public Subcategory getOneSubcategory(final String id_subcategory) {
         Subcategory subcategory = null;
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM subcategories WHERE id_subcategory = ?")) {
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM subcategory WHERE id_subcategory = ?")) {
             statement.setString(1, id_subcategory);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
@@ -35,7 +35,7 @@ public class SubcategoryServiceImpl implements SubCategoryService {
     public List<Subcategory> getAllSubcategory() {
         List<Subcategory> subcategories = new ArrayList<>();
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("SELECT * FROM subcategories");
+             PreparedStatement statement = connection.prepareStatement("SELECT * FROM subcategory");
              ResultSet resultSet = statement.executeQuery()) {
             while (resultSet.next()) {
                 subcategories.add(mapResultSetToSubcategory(resultSet));
@@ -50,7 +50,7 @@ public class SubcategoryServiceImpl implements SubCategoryService {
     public String addSubcategory(final Subcategory subcategory) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "INSERT INTO subcategories (name, active, id_category, date_created) VALUES (?, ?, ?, ?)",
+                     "INSERT INTO subcategory (name, active, id_category, date_created) VALUES (?, ?, ?, ?)",
                      PreparedStatement.RETURN_GENERATED_KEYS)) {
             statement.setString(1, subcategory.name);
             statement.setBoolean(2, subcategory.active);
@@ -72,7 +72,7 @@ public class SubcategoryServiceImpl implements SubCategoryService {
     public void updateSubcategory(final Subcategory subcategory) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
-                     "UPDATE subcategories SET name = ?, active = ?, id_category = ? WHERE id_subcategory = ?")) {
+                     "UPDATE subcategory SET name = ?, active = ?, id_category = ? WHERE id_subcategory = ?")) {
             statement.setString(1, subcategory.name);
             statement.setBoolean(2, subcategory.active);
             statement.setInt(3, subcategory.id_category);
@@ -86,7 +86,7 @@ public class SubcategoryServiceImpl implements SubCategoryService {
     @Override
     public void removeSubcategory(final String id_subcategory) {
         try (Connection connection = dataSource.getConnection();
-             PreparedStatement statement = connection.prepareStatement("DELETE FROM subcategories WHERE id_subcategory = ?")) {
+             PreparedStatement statement = connection.prepareStatement("DELETE FROM subcategory WHERE id_subcategory = ?")) {
             statement.setString(1, id_subcategory);
             statement.executeUpdate();
         } catch (SQLException e) {
