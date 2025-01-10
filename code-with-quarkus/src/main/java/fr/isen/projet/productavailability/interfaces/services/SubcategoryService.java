@@ -1,13 +1,13 @@
-package fr.isen.projet.product_availability.interfaces.services;
+package fr.isen.projet.productavailability.interfaces.services;
 
-import fr.isen.projet.product_availability.interfaces.models.Subcategory;
+import fr.isen.projet.productavailability.interfaces.models.Subcategory;
 
 import java.util.List;
 
 //begin of modifiable zone(Javadoc).......C/b54334eb-c262-473b-aaab-c4872bbd9b89
 
 //end of modifiable zone(Javadoc).........E/b54334eb-c262-473b-aaab-c4872bbd9b89
-public interface SubCategoryService {
+public interface SubcategoryService {
 //begin of modifiable zone(Javadoc).......C/e53262c4-f858-40ce-91c9-7cc4a33ff95e
 
 //end of modifiable zone(Javadoc).........E/e53262c4-f858-40ce-91c9-7cc4a33ff95e

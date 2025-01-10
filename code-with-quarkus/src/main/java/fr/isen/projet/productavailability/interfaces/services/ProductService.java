@@ -1,7 +1,7 @@
-package fr.isen.projet.product_availability.interfaces.services;
+package fr.isen.projet.productavailability.interfaces.services;
 
 import java.util.List;
-import fr.isen.projet.product_availability.interfaces.models.Product;
+import fr.isen.projet.productavailability.interfaces.models.Product;
 
 //begin of modifiable zone(Javadoc).......C/f9bd319e-84f6-403d-ac02-d6f47462d5e2
 

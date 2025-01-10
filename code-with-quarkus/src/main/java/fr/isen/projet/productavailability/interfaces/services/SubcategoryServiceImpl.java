@@ -1,17 +1,17 @@
-package fr.isen.projet.product_availability.interfaces.services;
+package fr.isen.projet.productavailability.interfaces.services;
 
-import fr.isen.projet.product_availability.interfaces.models.Subcategory;
+import fr.isen.projet.productavailability.interfaces.models.Subcategory;
 
 import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SubcategoryServiceImpl implements SubCategoryService {
+public class SubcategoryServiceImpl implements SubcategoryService {
 
-    private final DataSource dataSource;
+    private DataSource dataSource = null;
 
-    public SubcategoryServiceImpl(DataSource dataSource) {
+    public SubcategoryServiceImpl() {
         this.dataSource = dataSource;
     }
 
@@ -55,7 +55,7 @@ public class SubcategoryServiceImpl implements SubCategoryService {
             statement.setString(1, subcategory.name);
             statement.setBoolean(2, subcategory.active);
             statement.setInt(3, subcategory.id_category);
-            statement.setDate(4, new java.sql.Date(subcategory.date_created.getTime()));
+            statement.setDate(4, new Date(subcategory.date_created.getTime()));
             statement.executeUpdate();
 
             ResultSet generatedKeys = statement.getGeneratedKeys();

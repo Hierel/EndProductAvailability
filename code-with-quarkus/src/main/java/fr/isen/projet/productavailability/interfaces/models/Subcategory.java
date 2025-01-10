@@ -1,4 +1,4 @@
-package fr.isen.projet.product_availability.interfaces.models;
+package fr.isen.projet.productavailability.interfaces.models;
 
 import java.util.Date;
 

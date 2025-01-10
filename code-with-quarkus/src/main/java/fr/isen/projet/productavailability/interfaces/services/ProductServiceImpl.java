@@ -1,7 +1,6 @@
-package fr.isen.projet.product_availability.interfaces.services;
+package fr.isen.projet.productavailability.interfaces.services;
 
-import fr.isen.projet.product_availability.interfaces.models.Product;
-import fr.isen.projet.product_availability.interfaces.services.ProductService;
+import fr.isen.projet.productavailability.interfaces.models.Product;
 import io.agroal.api.AgroalDataSource;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;

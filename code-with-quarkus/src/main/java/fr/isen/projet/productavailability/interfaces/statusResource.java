@@ -1,4 +1,4 @@
-package fr.isen.projet.product_availability.interfaces;
+package fr.isen.projet.productavailability.interfaces;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
