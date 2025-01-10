@@ -1,34 +1,34 @@
 package fr.isen.projet.product_availability.interfaces.services;
 
 import fr.isen.projet.product_availability.interfaces.models.Subcategory;
-import fr.isen.projet.product_availability.interfaces.services.SubCategoryService;
-import io.agroal.api.AgroalDataSource;
-import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.inject.Inject;
 
+import javax.sql.DataSource;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@ApplicationScoped
 public class SubcategoryServiceImpl implements SubCategoryService {
 
-    @Inject
-    AgroalDataSource dataSource;
+    private final DataSource dataSource;
+
+    public SubcategoryServiceImpl(DataSource dataSource) {
+        this.dataSource = dataSource;
+    }
 
     @Override
-    public Subcategory getOneSubcategory(String id_subcategory) {
+    public Subcategory getOneSubcategory(final String id_subcategory) {
+        Subcategory subcategory = null;
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("SELECT * FROM subcategories WHERE id_subcategory = ?")) {
             statement.setString(1, id_subcategory);
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
-                return mapResultSetToSubcategory(resultSet);
+                subcategory = mapResultSetToSubcategory(resultSet);
             }
-            return null;
         } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la récupération de la sous-catégorie", e);
+            e.printStackTrace();
         }
+        return subcategory;
     }
 
     @Override
@@ -40,14 +40,14 @@ public class SubcategoryServiceImpl implements SubCategoryService {
             while (resultSet.next()) {
                 subcategories.add(mapResultSetToSubcategory(resultSet));
             }
-            return subcategories;
         } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la récupération des sous-catégories", e);
+            e.printStackTrace();
         }
+        return subcategories;
     }
 
     @Override
-    public String addSubcategory(Subcategory subcategory) {
+    public String addSubcategory(final Subcategory subcategory) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
                      "INSERT INTO subcategories (name, active, id_category, date_created) VALUES (?, ?, ?, ?)",
@@ -62,14 +62,14 @@ public class SubcategoryServiceImpl implements SubCategoryService {
             if (generatedKeys.next()) {
                 return generatedKeys.getString(1);
             }
-            return null;
         } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de l'ajout de la sous-catégorie", e);
+            e.printStackTrace();
         }
+        return null;
     }
 
     @Override
-    public void updateSubcategory(Subcategory subcategory) {
+    public void updateSubcategory(final Subcategory subcategory) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement(
                      "UPDATE subcategories SET name = ?, active = ?, id_category = ? WHERE id_subcategory = ?")) {
@@ -79,21 +79,22 @@ public class SubcategoryServiceImpl implements SubCategoryService {
             statement.setString(4, subcategory.id_subcategory);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la mise à jour de la sous-catégorie", e);
+            e.printStackTrace();
         }
     }
 
     @Override
-    public void removeSubcategory(String id_subcategory) {
+    public void removeSubcategory(final String id_subcategory) {
         try (Connection connection = dataSource.getConnection();
              PreparedStatement statement = connection.prepareStatement("DELETE FROM subcategories WHERE id_subcategory = ?")) {
             statement.setString(1, id_subcategory);
             statement.executeUpdate();
         } catch (SQLException e) {
-            throw new RuntimeException("Erreur lors de la suppression de la sous-catégorie", e);
+            e.printStackTrace();
         }
     }
 
+    // Mapper le ResultSet en un objet Subcategory
     private Subcategory mapResultSetToSubcategory(ResultSet resultSet) throws SQLException {
         Subcategory subcategory = new Subcategory();
         subcategory.id_subcategory = resultSet.getString("id_subcategory");
